@@ -49,7 +49,7 @@
     {
       packages = {
         ${system} = {
-          hmOptionsJSON = pkgs.writeText "hmOptions.json" hmOptionsJSON;
+          inherit hmOptionsJSON;
         };
       };
     };
