@@ -20,8 +20,6 @@
         pkgs.nixosOptionsDoc {
           inherit (configuration) options;
         };
-    in
-    {
       hmOptionsJSON =
         (makeOptionsDoc (
           home-manager.lib.homeManagerConfiguration {
@@ -39,5 +37,12 @@
             ];
           }
         )).optionsJSON;
+    in
+    {
+      packages = {
+        ${system} = {
+          hmOptionsJSON = pkgs.writeText "hmOptions.json" hmOptionsJSON;
+        };
+      };
     };
 }
