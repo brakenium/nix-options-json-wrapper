@@ -19,7 +19,15 @@
         configuration:
         pkgs.nixosOptionsDoc {
           inherit (configuration) options;
+          # Filter out any options not beginning with `stylix`
+          transformOptions =
+            option:
+            option
+            // {
+              visible = option.visible && builtins.elemAt option.loc 0 == "stylix";
+            };
         };
+
       hmOptionsJSON =
         (makeOptionsDoc (
           home-manager.lib.homeManagerConfiguration {
