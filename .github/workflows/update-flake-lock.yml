@@ -27,15 +27,12 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          # configure user
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
-          # stage any file changes to be committed
           git add -f flake.lock
-
-          # make commit with staged changes
-          git commit -m 'Update flake.lock'
-
-          # push the commit back up to source GitHub repository
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update flake.lock'
+            git push
+          else
+            echo "No changes to commit."
+          fi
