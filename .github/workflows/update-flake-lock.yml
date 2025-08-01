@@ -22,6 +22,11 @@ jobs:
       - name: Set up Nix
         uses: cachix/install-nix-action@v15
 
+      - name: Configure Nix GH authentication
+        run: |
+          mkdir -p ~/.config/nix
+          echo "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}" > ~/.config/nix/nix.conf
+
       - name: Update flake.lock
         run: nix flake update
 
