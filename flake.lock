@@ -254,11 +254,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1758716250,
-        "narHash": "sha256-PvOo4vSk7WAOhSifgL+rzExihquU9DOIOQPrUVuFHpE=",
+        "lastModified": 1758750998,
+        "narHash": "sha256-Ho8CaZj/UwBF+QJDIAmA6KL9bPJRvLj5FxUOvbeuUfw=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "526c882800837cce7676f3e11bb3e13e975c6032",
+        "rev": "1284c1891b72c8670164eefe602300fe2d87f0cb",
         "type": "github"
       },
       "original": {
