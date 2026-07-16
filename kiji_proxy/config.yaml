@@ -1,0 +1,52 @@
+name: Kiji Privacy Proxy
+version: 0.1.0
+slug: kiji_proxy
+description: Run Dataiku Kiji Privacy Proxy in Home Assistant
+url: https://github.com/dataiku/kiji-proxy
+startup: services
+boot: auto
+init: false
+arch:
+  - amd64
+ports:
+  8080/tcp: 8080
+  8081/tcp: 8081
+ports_description:
+  8080/tcp: Kiji forward proxy and API
+  8081/tcp: Kiji transparent proxy (MITM)
+options:
+  openai_api_key: ""
+  anthropic_api_key: ""
+  gemini_api_key: ""
+  mistral_api_key: ""
+  openai_base_url: api.openai.com
+  anthropic_base_url: api.anthropic.com
+  gemini_base_url: generativelanguage.googleapis.com
+  mistral_base_url: api.mistral.ai
+  detector_name: onnx_model_detector
+  proxy_port: 8080
+  transparent_proxy_enabled: true
+  transparent_proxy_port: 8081
+  log_pii_changes: true
+  log_requests: false
+  log_responses: false
+  log_verbose: false
+  serve_ui: false
+schema:
+  openai_api_key: password?
+  anthropic_api_key: password?
+  gemini_api_key: password?
+  mistral_api_key: password?
+  openai_base_url: str
+  anthropic_base_url: str
+  gemini_base_url: str
+  mistral_base_url: str
+  detector_name: list(onnx_model_detector|regex_detector|model_detector)
+  proxy_port: port
+  transparent_proxy_enabled: bool
+  transparent_proxy_port: port
+  log_pii_changes: bool
+  log_requests: bool
+  log_responses: bool
+  log_verbose: bool
+  serve_ui: bool
